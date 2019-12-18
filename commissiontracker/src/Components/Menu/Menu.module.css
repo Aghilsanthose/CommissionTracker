@@ -1,0 +1,11 @@
+.menu {
+  padding: 0.1rem 1rem;
+  margin: 0.4rem;
+  background: black;
+}
+
+@media (min-width: 40rem) {
+  .menudisplay {
+    display: none;
+  }
+}

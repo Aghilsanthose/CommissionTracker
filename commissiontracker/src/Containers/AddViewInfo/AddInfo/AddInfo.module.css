@@ -1,0 +1,35 @@
+.form {
+  box-sizing: border-box;
+  display: flex;
+  width: 90%;
+  margin: 3rem auto;
+  flex-direction: column;
+}
+
+.button {
+  color: white;
+  margin: 0.5rem auto;
+  font-weight: bold;
+  width: 30%;
+  height: 3rem;
+  background: rgb(27, 27, 214);
+  font-size: 1.2rem;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+}
+
+.button:disabled {
+  color: beige;
+  background: grey;
+  cursor: not-allowed;
+  width: 28%;
+  height: 2rem;
+}
+
+@media (min-width: 40rem) {
+  .form {
+    width: 60%;
+  }
+}

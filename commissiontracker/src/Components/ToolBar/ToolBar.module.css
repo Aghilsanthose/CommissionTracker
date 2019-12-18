@@ -1,0 +1,18 @@
+.toolbar {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.5rem;
+  align-content: center;
+}
+
+.disableNav {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .disableNav {
+    display: block;
+  }
+}

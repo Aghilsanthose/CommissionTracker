@@ -1,0 +1,26 @@
+.label {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.input {
+  padding: 0.5rem;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgba(131, 131, 209, 0.37);
+}
+
+.input:hover,
+.input:active {
+  background: rgba(131, 131, 209, 0.37);
+  border: 2px solid rgba(131, 131, 209, 0.37);
+}
+
+.errorMsg {
+  font-size: 1rem;
+  color: red;
+  margin: 2px;
+  margin: 0;
+}
