@@ -1,0 +1,91 @@
+.yarn {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 2rem auto;
+  margin-top: 6.1rem;
+  box-sizing: border-box;
+  padding: 0 1rem;
+}
+
+.button {
+  color: white;
+  margin: 0.5rem auto;
+  font-weight: bold;
+  background: fuchsia;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+}
+
+.button:disabled {
+  color: beige;
+  background: grey;
+  cursor: not-allowed;
+}
+
+.label {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.calender {
+  width: 18%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgba(131, 131, 209, 0.37);
+}
+
+.calender:hover,
+.calender:active {
+  background: rgba(235, 217, 235, 0.63);
+  border: 2px solid rgba(235, 217, 235, 0.63);
+}
+
+.center {
+  text-align: center;
+}
+
+.buttonmodal {
+  display: inline-block;
+  border: none;
+  background: white;
+  outline: none;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.modaltitle {
+  color: crimson;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (min-width: 40rem) {
+  .yarn {
+    width: 50%;
+    height: 100vh;
+  }
+  .button {
+    width: 30%;
+  }
+  .button:disabled {
+    width: 28%;
+  }
+}

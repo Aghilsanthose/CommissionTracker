@@ -2,17 +2,18 @@
   box-sizing: border-box;
   display: flex;
   width: 90%;
-  margin: 3rem auto;
+  margin: 1rem auto;
+  margin-top: 5.7rem;
+  padding: 1rem;
   flex-direction: column;
+  height: 70vh;
 }
 
 .button {
   color: white;
   margin: 0.5rem auto;
   font-weight: bold;
-  width: 30%;
-  height: 3rem;
-  background: rgb(27, 27, 214);
+  background: fuchsia;
   font-size: 1.2rem;
   border-radius: 20px;
   outline: none;
@@ -24,12 +25,46 @@
   color: beige;
   background: grey;
   cursor: not-allowed;
-  width: 28%;
-  height: 2rem;
+}
+
+.modaltitle {
+  font-size: 1.2rem;
+  color: crimson;
+}
+
+.center {
+  text-align: center;
+}
+
+.buttonmodal {
+  display: inline-block;
+  border: none;
+  background: white;
+  outline: none;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
 }
 
 @media (min-width: 40rem) {
   .form {
-    width: 60%;
+    width: 50%;
+    height: 80vh;
+  }
+  .button {
+    height: 3rem;
+    width: 30%;
+  }
+  .button:disabled {
+    height: 2rem;
+    width: 28%;
   }
 }

@@ -1,0 +1,22 @@
+.modal {
+  position: fixed;
+  z-index: 20;
+  top: 20%;
+  left: 30%;
+  background: white;
+  width: 30%;
+  padding: 1rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  transition: transform 1s ease-in, opacity 0.5s ease-in;
+}
+
+.close {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.open {
+  transform: translateY(0%);
+  opacity: 1;
+}

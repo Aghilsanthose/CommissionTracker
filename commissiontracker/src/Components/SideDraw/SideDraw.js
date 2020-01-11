@@ -6,7 +6,7 @@ const sideDraw = props => {
   return (
     <div className={classes.sidedraw}>
       <div className={classes.aligningnav}>
-        <NavigationItems />
+        <NavigationItems clicked={props.clicked} />
       </div>
     </div>
   );

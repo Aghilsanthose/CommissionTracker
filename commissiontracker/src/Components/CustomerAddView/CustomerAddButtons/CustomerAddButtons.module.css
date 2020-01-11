@@ -1,0 +1,80 @@
+.overalldisplaybutton {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-around;
+  align-content: center;
+  width: 90%;
+  flex-wrap: wrap;
+  margin: 5px auto;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.individualbutton a {
+  margin: 3px;
+  display: inline-block;
+  padding: 3px 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.addbuyer a {
+  color: white;
+  background-color: thistle;
+}
+
+.addbuyer a:hover,
+.addbuyer a.active {
+  font-size: 1.2rem;
+  background-color: fuchsia;
+}
+
+.addseller a {
+  color: white;
+  background-color: thistle;
+}
+
+.addseller a:hover,
+.addseller a.active {
+  font-size: 1.2rem;
+  background-color: fuchsia;
+}
+
+.buyerlist a {
+  color: white;
+  background-color: thistle;
+}
+
+.buyerlist a.active,
+.buyerlist a:hover {
+  font-size: 1.2rem;
+  background-color: fuchsia;
+}
+
+.sellerlist a {
+  color: white;
+  background-color: thistle;
+}
+
+.sellerlist a.active,
+.sellerlist a:hover {
+  font-size: 1.2rem;
+  background-color: fuchsia;
+}
+
+@media (min-width: 40rem) {
+  .overalldisplaybutton {
+    width: 60%;
+  }
+
+  .individualbutton a {
+    padding: 3px 2rem;
+  }
+}

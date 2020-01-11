@@ -1,3 +1,13 @@
-.navigationitem {
+.navigationitem a {
   padding: 0.5rem 2rem;
+  text-decoration: none;
+  color: black;
+}
+
+.navigationitem a:hover,
+.navigationitem a.active {
+  color: fuchsia;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
 }

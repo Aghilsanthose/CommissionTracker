@@ -1,0 +1,50 @@
+.white {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  z-index: 10;
+  right: 0;
+  background-color: white;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.overalldisplaybutton {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-around;
+  align-content: center;
+  width: 90%;
+  flex-wrap: wrap;
+  margin: 5px auto;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.individualbutton a {
+  margin: 3px;
+  display: inline-block;
+  padding: 3px 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: white;
+  background-color: thistle;
+}
+
+.individualbutton a:hover,
+.individualbutton a.active {
+  background-color: fuchsia;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 40rem) {
+  .overalldisplaybutton {
+    width: 30%;
+  }
+
+  .individualbutton a {
+    padding: 3px 2rem;
+  }
+}

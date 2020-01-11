@@ -1,1 +1,4 @@
-
+.logocontainer {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,65 @@
+.fixed {
+  position: fixed;
+  height: 100vh;
+  right: 20%;
+  left: 20%;
+  background: white;
+  z-index: -10;
+  top: 3.5rem;
+}
+
+.yarnview {
+  margin: 0 auto;
+  margin-top: 4rem;
+  width: 55%;
+}
+
+.form {
+}
+
+.formtitle {
+  width: 100%;
+  text-align: center;
+  color: crimson;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttoncontainer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.buttoncontainer button {
+  padding: 0 1rem;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.pendinginfo {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.buyer {
+  color: darkcyan;
+}
+
+.seller {
+  color: maroon;
+}

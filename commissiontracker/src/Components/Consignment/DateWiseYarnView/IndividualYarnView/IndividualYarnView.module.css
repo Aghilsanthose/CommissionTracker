@@ -1,0 +1,133 @@
+.individualyarnview {
+  box-sizing: border-box;
+  width: 90%;
+  border: 1px solid thistle;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: rgb(255, 249, 255);
+  transition: all 0.2s ease-in;
+}
+
+.individualyarnview:hover {
+  width: 92%;
+  padding: 0.8rem;
+  margin: 0.8rem auto;
+  background-color: white;
+}
+
+.headercontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transactiondata {
+  padding: 0 1rem;
+  display: flex;
+}
+
+.transactiondata div {
+  padding: 0 1rem;
+}
+
+.transactiondata label {
+  color: gray;
+}
+
+.container img {
+  height: 70px;
+  width: 70px;
+}
+
+.header {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Gayathri", sans-serif;
+}
+
+.header img {
+  height: 3rem;
+  width: 3rem;
+  padding: 0 1rem;
+}
+
+.pendinginfoplusdata {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  font-size: 1rem;
+}
+
+.pending {
+  color: crimson;
+}
+
+.buyer {
+  color: darkcyan;
+}
+
+.seller {
+  color: maroon;
+}
+
+.amount {
+  padding: 5px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px black;
+}
+
+.green {
+  color: darkcyan;
+  padding: 0 1rem;
+}
+
+.red {
+  color: maroon;
+  padding: 0 1rem;
+}
+
+.buttoncontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttoncontainer button {
+  font-size: 0.9rem;
+  margin: 0 1rem;
+  border-radius: 10px;
+  color: gray;
+  padding: 5px 0.5rem;
+  background-color: white;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.buttoncontainer button:hover {
+  background-color: gray;
+  color: white;
+}
+
+.paid {
+  background-color: rgb(194, 250, 222);
+  border-color: rgb(194, 250, 222);
+}

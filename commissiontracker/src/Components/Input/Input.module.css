@@ -14,8 +14,8 @@
 
 .input:hover,
 .input:active {
-  background: rgba(131, 131, 209, 0.37);
-  border: 2px solid rgba(131, 131, 209, 0.37);
+  background: rgba(235, 217, 235, 0.63);
+  border: 2px solid rgba(235, 217, 235, 0.63);
 }
 
 .errorMsg {
@@ -24,3 +24,13 @@
   margin: 2px;
   margin: 0;
 }
+
+.inputerr {
+  background-color: rgb(250, 202, 202);
+}
+
+/* .temp {
+  padding: 0;
+  border: 1px solid black !important;
+  border-radius: 10px !important;
+} */

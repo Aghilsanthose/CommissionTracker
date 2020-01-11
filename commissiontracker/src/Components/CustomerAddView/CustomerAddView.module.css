@@ -1,0 +1,9 @@
+.customer {
+  position: fixed;
+  margin: 0 auto;
+  background: white;
+  height: 100vh;
+  z-index: -10;
+  left: 20%;
+  right: 20%;
+}

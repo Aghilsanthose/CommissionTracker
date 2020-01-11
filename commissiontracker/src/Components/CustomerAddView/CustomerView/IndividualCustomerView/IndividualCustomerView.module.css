@@ -1,0 +1,77 @@
+.individualcustomer {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem auto;
+  border: 2px solid thistle;
+  /* box-shadow: 2px 2px 2px thistle; */
+  box-sizing: border-box;
+  width: 80%;
+  border-radius: 15px;
+  background-color: rgb(255, 249, 255);
+  transition: all 0.2s ease-in;
+}
+
+.individualcustomer:hover {
+  background-color: white;
+  width: 82%;
+  padding: 0.8rem;
+  margin: 0.8rem auto;
+}
+
+.individualyarndata {
+  width: 100%;
+}
+
+.logo {
+  color: white;
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: 1.2rem;
+  margin: 0.5rem;
+  transform: rotateZ(270deg);
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
+.red {
+  color: white;
+  background-color: red;
+}
+
+.title {
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Gayathri", sans-serif;
+}
+
+.titlebuyercolor {
+  color: darkcyan;
+}
+
+.titlesellercolor {
+  color: maroon;
+}
+.remainingdata {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}
+
+.remainingdata span {
+  color: gainsboro;
+}
+
+.remainingdata div {
+  color: gray;
+}
