@@ -1,15 +1,15 @@
 import instance from "../../Hoc/axiosInstance";
-import * as actionTypes from "../ActionTypes";
+import * as actionTypes from "../Reducers/Consignment/actionTypes";
 
 const loading = () => {
   return {
-    type: actionTypes.LOADING
+    type: actionTypes.CONSIGNMENTLOADING
   };
 };
 
 const error = errMsg => {
   return {
-    type: actionTypes.ERROR,
+    type: actionTypes.CONSIGNMENTLOADING,
     data: errMsg
   };
 };
@@ -47,12 +47,12 @@ const sortingModifiedData = arr => {
   return outsideArr;
 };
 
-export const storingYarnData = (dataObj, replaceFn) => {
+export const storingYarnData = (dataObj, replaceFn, userId) => {
   return dispatch => {
     // console.log("In Acttion creator", dataObj);
     dispatch(loading());
     instance
-      .post("/consignment/yarn.json", dataObj)
+      .post(`/consignment/yarn.json?auth=${userId}`, dataObj)
       .then(reponse => {
         dispatch(loading());
         replaceFn("/home");
@@ -65,12 +65,49 @@ export const storingYarnData = (dataObj, replaceFn) => {
   };
 };
 
-export const retrivingYarnDataFromServer = () => {
+const choosingCorrectUrlPath = (filterArr, userId) => {
+  let url = `consignment/yarn.json?auth=${userId}`;
+  if (filterArr && filterArr.length > 0) {
+    switch (filterArr[0].label) {
+      case "buyerName":
+        return `${url}?orderBy="buyerName"&equalTo="${filterArr[0].value}"`;
+      case "sellerName":
+        return `${url}?orderBy="sellerName"&equalTo="${filterArr[0].value}"`;
+      case "paymentStatus":
+        return `${url}?orderBy="paymentStatus"&equalTo="${filterArr[0].value}"`;
+      case "date":
+        return `${url}?orderBy="timeStamp"&startAt=${filterArr[0].value.startDate}&endAt=${filterArr[0].value.endDate}`;
+    }
+  } else {
+    return url;
+  }
+};
+
+const filterOtherValues = (filterArr, yarnData) => {
+  let tempOtherFilteredValues = yarnData;
+  for (let i = 1; i < filterArr.length; i++) {
+    if (filterArr[i].label !== "date") {
+      tempOtherFilteredValues = tempOtherFilteredValues.filter(
+        element => element[filterArr[i].label] === filterArr[i].value
+      );
+    } else {
+      tempOtherFilteredValues = tempOtherFilteredValues.filter(
+        element =>
+          element.timeStamp >= filterArr[i].value.startDate &&
+          element.timeStamp <= filterArr[i].value.endDate
+      );
+    }
+  }
+  return tempOtherFilteredValues;
+};
+
+export const retrivingYarnDataFromServer = (filterArr, userId) => {
   return dispatch => {
-    const modifiedData = [];
+    const url = choosingCorrectUrlPath(filterArr, userId);
+    let modifiedData = [];
     dispatch(loading());
     instance
-      .get("/consignment/yarn.json")
+      .get(`${url}`)
       .then(response => {
         dispatch(loading());
         for (let key in response.data) {
@@ -86,14 +123,15 @@ export const retrivingYarnDataFromServer = () => {
             totalPaidCommission: response.data[key].totalPaidCommission,
             buyerCommission: response.data[key].commissionBuyer,
             sellerCommission: response.data[key].commissionSeller,
-            totalBags: response.data[key].totalBags
+            totalBags: response.data[key].totalBags,
+            paymentStatus: response.data[key].paymentStatus
           });
         }
-
-        // console.log("checking", modifiedData);
-        // console.log("calling function", sortingModifiedData(modifiedData));
+        if (filterArr && filterArr.length > 1) {
+          modifiedData = filterOtherValues(filterArr, modifiedData);
+        }
+        console.log("Modified Data", modifiedData);
         dispatch(storingYarnDataToRedux(modifiedData));
-        // console.log("In action creator", modifiedData);
       })
       .catch(err => {
         dispatch(loading());
@@ -102,11 +140,11 @@ export const retrivingYarnDataFromServer = () => {
   };
 };
 
-export const storingPaidCommission = (commissionObj, key, replaceFn) => {
+export const storingPaidCommission = (commissionObj, key, userId) => {
   return dispatch => {
     dispatch(loading());
     instance
-      .patch(`/consignment/yarn/${key}.json`, commissionObj)
+      .patch(`/consignment/yarn/${key}.json?auth=${userId}`, commissionObj)
       .then(response => {
         dispatch(loading());
         window.location.reload();

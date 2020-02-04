@@ -73,7 +73,7 @@ const individualYarnView = props => {
         {totalCommission <= totalPaidCommission ? null : (
           <button onClick={props.updateHandler}>UPDATE</button>
         )}
-        <button>DETAILS</button>
+        <button onClick={props.detailsButton}>DETAILS</button>
       </div>
     </div>
   );

@@ -1,0 +1,12 @@
+.signature p:first-child {
+  padding-top: 4rem;
+}
+.name {
+  text-align: end;
+  padding: 0 1rem;
+  margin: 0;
+}
+
+.end {
+  text-align: center;
+}

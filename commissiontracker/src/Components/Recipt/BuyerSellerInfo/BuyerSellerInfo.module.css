@@ -1,0 +1,15 @@
+.buyersellerinfo {
+  display: flex;
+  justify-content: space-between;
+}
+.buyersellerinfo p {
+  margin: 0;
+}
+
+.title {
+  text-align: center;
+}
+
+.buyersellerinfo span {
+  font-size: 0.9rem;
+}

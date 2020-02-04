@@ -5,12 +5,16 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import "../node_modules/font-awesome/css/font-awesome.min.css";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import commonReducer from "./Store/Reducers/commonReducer";
-import viewInfoReducer from "./Store/Reducers/viewInfoReducer";
-import consignmentReducer from "./Store/Reducers/consignmentReducer";
+import viewInfoReducer from "./Store/Reducers/Customer/View/viewInfoReducer";
+import consignmentReducer from "./Store/Reducers/Consignment/consignmentReducer";
+import detailsYarnPageReducer from "./Store/Reducers/Details/detailsYarnPageReducer";
+import authenticateUserReducer from "./Store/Reducers/LoginReducer/authenticateUserReducer";
+import addInforeducer from "./Store/Reducers/Customer/Add/addInfoReducer";
+import addYarnReducer from "./Store/Reducers/Consignment/AddYarn/addYarnReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,9 +25,12 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // };
 
 const rootReducer = combineReducers({
-  common: commonReducer,
+  addInfo: addInforeducer,
   viewInfo: viewInfoReducer,
-  consignment: consignmentReducer
+  consignment: consignmentReducer,
+  detailsPage: detailsYarnPageReducer,
+  auth: authenticateUserReducer,
+  addYarn: addYarnReducer
 });
 
 const store = createStore(

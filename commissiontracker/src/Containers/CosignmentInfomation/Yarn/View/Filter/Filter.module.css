@@ -1,0 +1,75 @@
+.filter {
+  width: 100%;
+}
+
+.filtercontainer {
+  padding: 5px;
+  box-shadow: 2px 2px 2px gainsboro;
+  margin: 1rem 0;
+  border: 0.5px solid gainsboro;
+  border-radius: 25px;
+  background-color: rgb(245, 227, 182);
+}
+
+.buttoncontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.filterbutton {
+  outline: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: goldenrod;
+}
+
+.filterbutton:hover,
+.filterbutton:active {
+  background-color: white;
+  color: goldenrod;
+}
+
+.applyclearbutton {
+  color: white;
+  background-color: pink;
+}
+
+.applybutton:hover {
+  color: pink;
+  background-color: white;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.date label {
+  margin: 8px 10px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.otherfilters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.calender {
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgba(131, 131, 209, 0.37);
+}
+
+.calender:hover,
+.calender:active {
+  background: rgba(235, 217, 235, 0.63);
+  border: 2px solid rgba(235, 217, 235, 0.63);
+}

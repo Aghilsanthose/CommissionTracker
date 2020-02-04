@@ -1,0 +1,22 @@
+.companyname h1,
+.companyname p {
+  margin: 0;
+  text-align: center;
+}
+
+.container {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.address p,
+.bank p {
+  margin: 0;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}

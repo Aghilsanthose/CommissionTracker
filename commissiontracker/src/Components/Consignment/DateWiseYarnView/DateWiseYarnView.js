@@ -19,6 +19,9 @@ const dateWiseYarnView = props => {
                 props.data.date
               )
             }
+            detailsButton={() =>
+              props.detailsButton(props.data.dataArray[index].key)
+            }
           />
         ))}
       </div>

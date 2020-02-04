@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Route } from "react-router-dom";
 
 import classes from "./YarnView.module.css";
 import Spinner from "../../../../Components/Spinner/Spinner";
@@ -9,6 +9,8 @@ import DateWiseYarnView from "../../../../Components/Consignment/DateWiseYarnVie
 import Modal from "../../../../Components/Modal/Modal";
 import BackDrop from "../../../../Components/BackDrop/Backdrop";
 import Input from "../../../../Components/Input/Input";
+import Filter from "./Filter/Filter";
+import Details from "../../Details/Details";
 
 import yarnModalDetails from "../../../../ResusableFunctions/yarnModalDetails";
 import validationFunction from "../../../../ResusableFunctions/validationFunction";
@@ -48,7 +50,7 @@ class YarnView extends Component {
   }
 
   componentDidMount() {
-    this.props.retrivingYarnData();
+    this.props.retrivingYarnData(null, this.props.userId);
   }
 
   updateHandler = (key, date) => {
@@ -82,19 +84,35 @@ class YarnView extends Component {
 
     const particularData = this.locatingParticularYarnHistoryData();
 
+    const buyerPaidCommission =
+      +particularData.buyerPaidCommission +
+      +this.state.yarnModal.buyerPaidCommission.value;
+    const sellerPaidCommission =
+      +particularData.sellerPaidCommission +
+      +this.state.yarnModal.sellerPaidCommission.value;
+    const totalPaidCommission =
+      +particularData.totalPaidCommission +
+      (+this.state.yarnModal.buyerPaidCommission.value +
+        +this.state.yarnModal.sellerPaidCommission.value);
+
     const commissionObj = {
-      buyerPaidCommission:
-        +particularData.buyerPaidCommission +
-        +this.state.yarnModal.buyerPaidCommission.value,
-      sellerPaidCommission:
-        +particularData.sellerPaidCommission +
-        +this.state.yarnModal.sellerPaidCommission.value,
-      totalPaidCommission:
-        +particularData.totalPaidCommission +
-        (+this.state.yarnModal.buyerPaidCommission.value +
-          +this.state.yarnModal.sellerPaidCommission.value)
+      buyerPaidCommission: buyerPaidCommission,
+      sellerPaidCommission: sellerPaidCommission,
+      totalPaidCommission: totalPaidCommission,
+      paymentStatus:
+        particularData.totalCommission <= totalPaidCommission
+          ? "PAID"
+          : "PENDING"
     };
-    this.props.storingPaidCommission(commissionObj, this.state.updateKey);
+    this.props.storingPaidCommission(
+      commissionObj,
+      this.state.updateKey,
+      this.props.userId
+    );
+  };
+
+  detailsButtonHandler = orderKey => {
+    this.props.history.push(`/history/${orderKey}/details`);
   };
 
   render() {
@@ -114,12 +132,19 @@ class YarnView extends Component {
       yarnList = this.props.yarnHistoryList.map(individualElement => {
         return (
           <DateWiseYarnView
-            key={individualElement.date}
+            key={individualElement.dataArray[0].key}
             data={individualElement}
             updateHandler={this.updateHandler}
+            detailsButton={this.detailsButtonHandler}
           />
         );
       });
+    } else {
+      yarnList = (
+        <p className={classes.nodatayarn}>
+          Thanks for patience! Data is absent for corresponding criteria
+        </p>
+      );
     }
 
     if (this.props.errMsg) {
@@ -195,6 +220,7 @@ class YarnView extends Component {
       <React.Fragment>
         <div className={classes.fixed}></div>
         <div className={classes.yarnview}>
+          <Filter />
           {yarnList}
           {modal}
         </div>
@@ -206,17 +232,18 @@ class YarnView extends Component {
 const mapStateToProps = state => {
   return {
     yarnHistoryList: state.consignment.yarnHistoryList,
-    loading: state.common.loading,
-    errMsg: state.common.errMsg
+    loading: state.detailsPage.loading,
+    errMsg: state.detailsPage.errMsg,
+    userId: state.auth.userId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    retrivingYarnData: () =>
-      dispatch(actionCreators.retrivingYarnDataFromServer()),
-    storingPaidCommission: (commissionObj, key) =>
-      dispatch(actionCreators.storingPaidCommission(commissionObj, key))
+    retrivingYarnData: (filterArr, userId) =>
+      dispatch(actionCreators.retrivingYarnDataFromServer(filterArr, userId)),
+    storingPaidCommission: (commissionObj, key, userId) =>
+      dispatch(actionCreators.storingPaidCommission(commissionObj, key, userId))
   };
 };
 

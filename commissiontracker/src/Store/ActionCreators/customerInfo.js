@@ -1,9 +1,9 @@
-import * as actionTypes from "../ActionTypes";
+import * as actionTypes from "../Reducers/Customer/Add/actionTypes";
 import instance from "../../Hoc/axiosInstance";
 
 const loading = () => {
   return {
-    type: actionTypes.LOADING
+    type: actionTypes.CUSTOMERADDLOADING
   };
 };
 

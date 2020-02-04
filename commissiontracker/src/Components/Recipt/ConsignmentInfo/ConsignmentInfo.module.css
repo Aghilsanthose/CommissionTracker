@@ -1,0 +1,28 @@
+.consignmentinfo {
+  box-sizing: border-box;
+}
+
+.consignmentinfo p {
+  text-align: center;
+  font-weight: bold;
+}
+
+.consignmentinfo table {
+  width: 100%;
+}
+
+.consignmentinfo table,
+.consignmentinfo tr,
+.consignmentinfo th,
+.consignmentinfo td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.consignmentinfo th {
+  padding: 0 0.5rem;
+}
+
+.consignmentinfo td {
+  text-align: center;
+}

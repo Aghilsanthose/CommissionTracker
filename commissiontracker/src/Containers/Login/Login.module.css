@@ -1,0 +1,53 @@
+.logincontainer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom right, rgb(253, 231, 235), Pink);
+  /* display: flex; */
+}
+.loginbox {
+  padding: 1rem;
+  border-radius: 25px;
+  background-color: white;
+  position: relative;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  top: 18%;
+  left: 40%;
+  position: relative;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  color: white;
+  margin: 0.5rem auto;
+  font-weight: bold;
+  background: fuchsia;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+}
+
+.button:disabled {
+  color: beige;
+  background: grey;
+  cursor: not-allowed;
+}
+
+.swtichbutton {
+  background-color: blueviolet;
+}
+
+.error {
+  text-align: center;
+  color: brown;
+  font-size: 1.1rem;
+}

@@ -31,19 +31,6 @@ class Yarn extends Component {
       }
     };
 
-    //Sorting of obtained props list
-    propsList.sort((a, b) => {
-      const val1 = a.data.name.toUpperCase();
-      const val2 = b.data.name.toUpperCase();
-      if (val1 < val2) {
-        return -1;
-      } else if (val1 > val2) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-
     if (
       !(
         this.state.yarn[type].options.every((value, index) => {
@@ -67,6 +54,17 @@ class Yarn extends Component {
 
   componentDidUpdate() {
     //Obtaining the props from redux store initially
+    console.log("[In Yarn] Did update");
+
+    //for updatingg buyername in state
+    this.updatingBuyerSellerName("buyerName", this.props.buyerList);
+
+    //for updating sellername in state
+    this.updatingBuyerSellerName("sellerName", this.props.sellerList);
+  }
+
+  componentDidMount() {
+    //Fetching the data while component is mounting
 
     //for updatingg buyername in state
     this.updatingBuyerSellerName("buyerName", this.props.buyerList);
@@ -127,9 +125,10 @@ class Yarn extends Component {
       buyerPaidCommission: 0,
       sellerPaidCommission: 0,
       totalPaidCommission: 0,
-      buyerKey: this.state.yarn.buyerName.value.key,
-      sellerKey: this.state.yarn.sellerName.value.key,
-      timeStamp: this.state.date.getTime()
+      buyerKey: this.state.yarn.buyerName.value.value.key,
+      sellerKey: this.state.yarn.sellerName.value.value.key,
+      timeStamp: this.state.date.getTime(),
+      paymentStatus: "PENDING"
     };
   };
 
@@ -157,7 +156,11 @@ class Yarn extends Component {
     event.preventDefault();
     console.log("Submit", this.yarnData());
 
-    this.props.storingYarnData(this.yarnData(), this.props.history.replace);
+    this.props.storingYarnData(
+      this.yarnData(),
+      this.props.history.replace,
+      this.props.userId
+    );
   };
 
   render() {
@@ -270,17 +273,18 @@ class Yarn extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.common.loading,
-    errorMsg: state.common.errorMsg,
+    loading: state.addYarn.loading,
+    errorMsg: state.addYarn.errorMsg,
     buyerList: state.viewInfo.buyerList,
-    sellerList: state.viewInfo.sellerList
+    sellerList: state.viewInfo.sellerList,
+    userId: state.auth.userId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    storingYarnData: (yarnData, replaceFn) =>
-      dispatch(actionCreators.storingYarnData(yarnData, replaceFn))
+    storingYarnData: (yarnData, replaceFn, userId) =>
+      dispatch(actionCreators.storingYarnData(yarnData, replaceFn, userId))
   };
 };
 

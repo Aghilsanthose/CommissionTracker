@@ -8,6 +8,13 @@
   top: 3.5rem;
 }
 
+.nodatayarn {
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem;
+  color: gray;
+}
+
 .yarnview {
   margin: 0 auto;
   margin-top: 4rem;

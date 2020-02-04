@@ -10,8 +10,6 @@ class ViewInfo extends Component {
   state = {};
 
   render() {
-    console.log("In render", this.props.buyerList);
-
     // Let the spinner revolves while fetching the data from the server
     let spinner = null;
     if (this.props.loading) {
@@ -62,18 +60,12 @@ class ViewInfo extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.common.loading,
+    loading: state.viewInfo.loading,
     buyerList: state.viewInfo.buyerList,
     sellerList: state.viewInfo.sellerList,
-    error: state.common.errorMsg
+    error: state.viewInfo.errorMsg,
+    userId: state.auth.userId
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    retrivingDataFromServer: type =>
-      dispatch(actionCreators.retrivingDatafromServer(type))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ViewInfo);
+export default connect(mapStateToProps)(ViewInfo);

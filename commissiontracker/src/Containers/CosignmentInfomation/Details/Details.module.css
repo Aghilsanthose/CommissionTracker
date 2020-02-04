@@ -1,0 +1,101 @@
+.fixed {
+  position: fixed;
+  height: 100vh;
+  right: 20%;
+  left: 20%;
+  background: white;
+  z-index: -10;
+  top: 3.5rem;
+}
+
+.header {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.details {
+  margin: 0 auto;
+  margin-top: 4rem;
+  width: 55%;
+}
+
+.template {
+  box-shadow: 1px 1px 1px 1px thistle;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  border: 0.5px solid thistle;
+}
+.buyerseller {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+
+.titleheader {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: "Raleway", sans-serif;
+  padding: 5px;
+}
+
+.body span {
+  color: thistle;
+}
+
+.body div {
+  color: gray;
+}
+
+.paymentfirstcontainer {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.paymentsecondcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+span.buyer {
+  color: darkcyan;
+}
+
+span.seller {
+  color: maroon;
+}
+
+span.symbol {
+  color: gray;
+}
+
+.reciptcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.reciptcontainer button {
+  margin: 0 1rem;
+  color: pink;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 15px;
+  outline: none;
+  font-weight: bold;
+}
+
+.reciptcontainer button:hover {
+  background: pink;
+  color: white;
+}

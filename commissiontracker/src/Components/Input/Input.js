@@ -1,10 +1,8 @@
 import React from "react";
 import Select from "react-select";
-import AsyncSelect from "react-select/async";
 import { connect } from "react-redux";
 
 import classes from "./Input.module.css";
-import * as actionCreators from "../../Store/ActionCreators/customerView";
 
 const input = props => {
   let inputCls = [classes.input];
@@ -42,6 +40,7 @@ const input = props => {
           border: "1px solid black",
           minHeight: "0",
           height: "2.1rem",
+          fontSize: "0.8rem",
           boxSizing: "border-box",
           boxShadow: "2px 2px 2px rgba(131, 131, 209, 0.37)",
           "&:hover": {
@@ -65,6 +64,20 @@ const input = props => {
             fontSize: "0.9rem",
             fontFamily: "'Nunito', sans-serif"
           };
+        },
+
+        container: styles => {
+          return {
+            ...styles,
+            minWidth: "18%"
+          };
+        },
+
+        input: styles => {
+          return {
+            ...styles,
+            fontSize: "0.9rem"
+          };
         }
       };
 
@@ -72,7 +85,6 @@ const input = props => {
         <React.Fragment>
           <label className={classes.label}>{props.elementConfig.label}</label>
           <Select
-            // className={classes.temp}
             value={props.value}
             onChange={props.onChangeHandler}
             options={props.options}

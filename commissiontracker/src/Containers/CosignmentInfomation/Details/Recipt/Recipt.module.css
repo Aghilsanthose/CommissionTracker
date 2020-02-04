@@ -1,0 +1,22 @@
+.reciptcontainer {
+  margin: 3rem auto;
+  width: 50%;
+}
+.recipt {
+  border: 2px solid black;
+  padding: 1rem;
+}
+
+.pdfbutton {
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: thistle;
+  color: white;
+  margin: 0.25rem auto;
+  outline: none;
+}
+
+.pdfbutton:hover {
+  background-color: white;
+  color: thistle;
+}

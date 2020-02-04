@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  height: 4rem;
+  /* position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10; */
+  align-items: center;
+  justify-content: center;
+}

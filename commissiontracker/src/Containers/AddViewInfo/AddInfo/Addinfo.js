@@ -166,7 +166,7 @@ class AddInfo extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.common.loading
+    loading: state.addInfo.loading
   };
 };
 
