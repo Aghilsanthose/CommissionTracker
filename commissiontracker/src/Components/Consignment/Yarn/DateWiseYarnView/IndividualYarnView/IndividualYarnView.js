@@ -1,8 +1,8 @@
 import React from "react";
 
 import classes from "./IndividualYarnView.module.css";
-import buyerSellerLogo from "../../../../Assets/Buyer/buyerSellerLogo.jpg";
-import transactionImage from "../../../../Assets/Buyer/transaction.png";
+import buyerSellerLogo from "../../../../../Assets/Buyer/buyerSellerLogo.jpg";
+import transactionImage from "../../../../../Assets/Buyer/transaction.png";
 
 const individualYarnView = props => {
   // console.log("In Indi", props);
@@ -42,6 +42,13 @@ const individualYarnView = props => {
 
   return (
     <div className={individualYarnViewcls}>
+      <div className={classes.delete}>
+        <i
+          onClick={() => props.deleteHandler(props)}
+          className="fa fa-trash-o"
+        ></i>
+      </div>
+
       <div className={classes.headercontainer}>
         <div className={classes.header}>
           <div className={classes.red}>{props.dataArr.sellerName}</div>{" "}
@@ -51,7 +58,6 @@ const individualYarnView = props => {
         </div>
         <div className={classes.status}>{status}</div>
       </div>
-
       <div className={classes.container}>
         <img src={transactionImage} />
         <div className={classes.pendinginfoplusdata}>

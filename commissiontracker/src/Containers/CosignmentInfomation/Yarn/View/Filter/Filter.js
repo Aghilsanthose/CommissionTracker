@@ -115,7 +115,8 @@ class Filter extends Component {
 
       // console.log(tempFilterValueArr);
       this.props.retrivingYarnListFromServer(
-        tempFilterValueArr.filter(element => element.value !== undefined)
+        tempFilterValueArr.filter(element => element.value !== undefined),
+        this.props.userId
       );
     }
   };
@@ -245,14 +246,15 @@ class Filter extends Component {
 const mapStateToProps = state => {
   return {
     buyerList: state.viewInfo.buyerList,
-    sellerList: state.viewInfo.sellerList
+    sellerList: state.viewInfo.sellerList,
+    userId: state.auth.userId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    retrivingYarnListFromServer: filterArr =>
-      dispatch(actionCreators.retrivingYarnDataFromServer(filterArr))
+    retrivingYarnListFromServer: (filterArr, userId) =>
+      dispatch(actionCreators.retrivingYarnDataFromServer(filterArr, userId))
   };
 };
 

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Spinner from "../../../Components/Spinner/Spinner";
-import IndividualCustomerView from "../../../Components/CustomerAddView/CustomerView/IndividualCustomerView/IndividualCustomerView";
-import * as actionCreators from "../../../Store/ActionCreators/customerView";
+import Spinner from "../../../../Components/UI/Spinner/Spinner";
+import IndividualCustomerView from "../../../../Components/CustomerAddView/CustomerView/IndividualCustomerView/IndividualCustomerView";
 import classes from "./ViewInfo.module.css";
 
 class ViewInfo extends Component {

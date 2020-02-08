@@ -9,7 +9,7 @@ const loading = () => {
 
 const error = errMsg => {
   return {
-    type: actionTypes.CONSIGNMENTLOADING,
+    type: actionTypes.CONSIGNMENTERROR,
     data: errMsg
   };
 };
@@ -70,13 +70,13 @@ const choosingCorrectUrlPath = (filterArr, userId) => {
   if (filterArr && filterArr.length > 0) {
     switch (filterArr[0].label) {
       case "buyerName":
-        return `${url}?orderBy="buyerName"&equalTo="${filterArr[0].value}"`;
+        return `${url}&orderBy="buyerName"&equalTo="${filterArr[0].value}"`;
       case "sellerName":
-        return `${url}?orderBy="sellerName"&equalTo="${filterArr[0].value}"`;
+        return `${url}&orderBy="sellerName"&equalTo="${filterArr[0].value}"`;
       case "paymentStatus":
-        return `${url}?orderBy="paymentStatus"&equalTo="${filterArr[0].value}"`;
+        return `${url}&orderBy="paymentStatus"&equalTo="${filterArr[0].value}"`;
       case "date":
-        return `${url}?orderBy="timeStamp"&startAt=${filterArr[0].value.startDate}&endAt=${filterArr[0].value.endDate}`;
+        return `${url}&orderBy="timeStamp"&startAt=${filterArr[0].value.startDate}&endAt=${filterArr[0].value.endDate}`;
     }
   } else {
     return url;
@@ -130,7 +130,7 @@ export const retrivingYarnDataFromServer = (filterArr, userId) => {
         if (filterArr && filterArr.length > 1) {
           modifiedData = filterOtherValues(filterArr, modifiedData);
         }
-        console.log("Modified Data", modifiedData);
+        // console.log("Modified Data", modifiedData);
         dispatch(storingYarnDataToRedux(modifiedData));
       })
       .catch(err => {

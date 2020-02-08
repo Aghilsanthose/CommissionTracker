@@ -99,3 +99,10 @@ span.symbol {
   background: pink;
   color: white;
 }
+
+.error {
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem;
+  color: gray;
+}

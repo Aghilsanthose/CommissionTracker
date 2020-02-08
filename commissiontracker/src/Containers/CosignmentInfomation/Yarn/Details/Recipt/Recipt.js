@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import CompanyInfo from "../../../../Components/Recipt/CompanyInfo/CompanyInfo";
-import BuyerSellerInfo from "../../../../Components/Recipt/BuyerSellerInfo/BuyerSellerInfo";
-import ConsignmentInfo from "../../../../Components/Recipt/ConsignmentInfo/ConsignmentInfo";
-import Signature from "../../../../Components/Recipt/Signature/Signature";
+import CompanyInfo from "../../../../../Components/Consignment/Yarn/Recipt/CompanyInfo/CompanyInfo";
+import BuyerSellerInfo from "../../../../../Components/Consignment/Yarn/Recipt/BuyerSellerInfo/BuyerSellerInfo";
+import ConsignmentInfo from "../../../../../Components/Consignment/Yarn/Recipt/ConsignmentInfo/ConsignmentInfo";
+import Signature from "../../../../../Components/Consignment/Yarn/Recipt/Signature/Signature";
 
 import classes from "./Recipt.module.css";
 
@@ -36,7 +36,7 @@ class Recipt extends Component {
             consignmentInfo={this.state.details.consignmentInfo}
           />
           <ConsignmentInfo
-            type="Buyer"
+            type={this.props.type}
             consignmentInfo={this.state.details.consignmentInfo}
           />
         </React.Fragment>
@@ -48,7 +48,7 @@ class Recipt extends Component {
           <button
             onClick={() =>
               this.props.history.push(
-                `/history/${this.props.match.params.id}/details/recipt/PDF`
+                `/history/${this.props.match.params.id}/details/recipt/${this.props.type}PDF`
               )
             }
             className={classes.pdfbutton}

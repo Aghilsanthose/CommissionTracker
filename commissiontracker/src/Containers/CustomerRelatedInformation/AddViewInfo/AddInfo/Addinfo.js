@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import classes from "./AddInfo.module.css";
-import customerData from "../../../ResusableFunctions/customerDetails";
-import Input from "../../../Components/Input/Input";
-import validationFunction from "../../../ResusableFunctions/validationFunction";
-import disablingButton from "../../../ResusableFunctions/disablingButton";
-import Modal from "../../../Components/Modal/Modal";
-import BackDrop from "../../../Components/BackDrop/Backdrop";
-import Spinner from "../../../Components/Spinner/Spinner";
-import * as actionCreators from "../../../Store/ActionCreators/customerInfo";
+import customerData from "../../../../ResusableFunctions/customerDetails";
+import Input from "../../../../Components/Input/Input";
+import validationFunction from "../../../../ResusableFunctions/validationFunction";
+import disablingButton from "../../../../ResusableFunctions/disablingButton";
+import Modal from "../../../../Components/UI/Modal/Modal";
+import BackDrop from "../../../../Components/UI/BackDrop/Backdrop";
+import Spinner from "../../../../Components/UI/Spinner/Spinner";
+import * as actionCreators from "../../../../Store/ActionCreators/customerInfo";
 
 class AddInfo extends Component {
   state = {

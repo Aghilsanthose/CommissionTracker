@@ -1,0 +1,43 @@
+.title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.deletemodal p {
+  text-align: center;
+}
+
+.deletemodal span {
+  background-color: gainsboro;
+}
+.buttoncontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttoncontainer button {
+  margin: 0 1rem;
+  outline: none;
+  padding: 0.2rem 0.5rem;
+  color: white;
+  border-radius: 10px;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: indianred;
+}
+
+.green:hover {
+  color: green;
+  background-color: white;
+}
+
+.red:hover {
+  color: indianred;
+  background-color: white;
+}

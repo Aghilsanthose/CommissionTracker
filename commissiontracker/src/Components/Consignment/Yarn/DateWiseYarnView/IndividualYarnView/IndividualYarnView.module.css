@@ -131,3 +131,13 @@
   background-color: rgb(194, 250, 222);
   border-color: rgb(194, 250, 222);
 }
+
+.delete {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete i {
+  height: 1.2rem;
+  width: 1.2rem;
+}

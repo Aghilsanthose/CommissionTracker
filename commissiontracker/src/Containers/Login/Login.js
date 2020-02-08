@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Input from "../../Components/Input/Input";
 import Logo from "../../Components/Login/Logo";
-import Spinner from "../../Components/Spinner/Spinner";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 
 import * as actionCreators from "../../Store/ActionCreators/logIn";
 import signUpDetails from "../../ResusableFunctions/signUpDetails";

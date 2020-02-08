@@ -9,9 +9,9 @@ import yarnFormDetails from "../../../ResusableFunctions/yarnFormDetails";
 import Input from "../../../Components/Input/Input";
 import validationFunction from "../../../ResusableFunctions/validationFunction";
 import disablingFunction from "../../../ResusableFunctions/disablingButton";
-import Modal from "../../../Components/Modal/Modal";
-import BackDrop from "../../../Components/BackDrop/Backdrop";
-import Spinner from "../../../Components/Spinner/Spinner";
+import Modal from "../../../Components/UI/Modal/Modal";
+import BackDrop from "../../../Components/UI/BackDrop/Backdrop";
+import Spinner from "../../../Components/UI/Spinner/Spinner";
 import * as actionCreators from "../../../Store/ActionCreators/consignmentYarn";
 
 class Yarn extends Component {

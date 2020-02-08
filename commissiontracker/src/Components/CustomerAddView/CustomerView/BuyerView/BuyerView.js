@@ -1,6 +1,6 @@
 import React from "react";
 
-import ViewInfo from "../../../../Containers/AddViewInfo/ViewInfo/ViewInfo";
+import ViewInfo from "../../../../Containers/CustomerRelatedInformation/AddViewInfo/ViewInfo/ViewInfo";
 
 const buyerView = () => {
   return (

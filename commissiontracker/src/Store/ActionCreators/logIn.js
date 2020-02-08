@@ -40,6 +40,10 @@ export const authLogout = () => {
   };
 };
 
+const syncAuthExpiry = expiryTime => dispatch => {
+  dispatch(setTimeout(authExpiry(),+expiryTime*1000));
+};
+
 export const authenticatingUser = authObj => dispatch => {
   dispatch(authStart());
   dispatch(loading());
@@ -52,7 +56,7 @@ export const authenticatingUser = authObj => dispatch => {
       console.log("In auth", response);
       dispatch(authSuccess(response.data.idToken, response.data.localId));
       dispatch(loading());
-      // dispatch(authExpiry());
+      syncAuthExpiry(response.data.expiresIn);
     })
     .catch(err => {
       dispatch(loading());

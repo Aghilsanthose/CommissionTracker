@@ -3,19 +3,21 @@ import "./App.css";
 import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import Footer from "./Components/Footer/Footer";
+import Footer from "./Components/UI/Footer/Footer";
 import Login from "./Containers/Login/Login";
-import Layout from "./Containers/Layout/Layout";
-import ToolBar from "./Components/ToolBar/ToolBar";
-import SideDraw from "./Components/SideDraw/SideDraw";
-import BackDrop from "./Components/BackDrop/Backdrop";
+import Layout from "./Components/Layout/Layout";
+import ToolBar from "./Components/UI/ToolBar/ToolBar";
+import SideDraw from "./Components/UI/SideDraw/SideDraw";
+import BackDrop from "./Components/UI/BackDrop/Backdrop";
 import CustomerAddView from "./Components/CustomerAddView/CustomerAddView";
 import Consignment from "./Components/Consignment/Consignment";
-import YarnView from "./Containers/CosignmentInfomation/Yarn/View/YarnView";
-import Details from "./Containers/CosignmentInfomation/Details/Details";
+import YarnView from "./Containers/CosignmentInfomation//Yarn/View/YarnView";
+import Details from "./Containers/CosignmentInfomation/Yarn/Details/Details";
 import Logout from "./Containers/Login/Logout/Logout";
-import Recipt from "./Containers/CosignmentInfomation/Details/Recipt/Recipt";
-import ReciptPDF from "./Containers/CosignmentInfomation/Details/Recipt/ReciptPDF/ReciptPDF";
+import BuyerRecipt from "./Components/Consignment/Yarn/BuyerSellerRecipt/BuyerRecipt/BuyerRecipt";
+import SellerRecipt from "./Components/Consignment/Yarn/BuyerSellerRecipt/SellerRecipt/SellerRecipt";
+import BuyerPDFRecipt from "./Components/Consignment/Yarn/BuyerSellerRecipt/BuyerSellerPDFRecipt/BuyerPDFRecipt/BuyerPDFRecipt";
+import SellerPDFRecipt from "./Components/Consignment/Yarn/BuyerSellerRecipt/BuyerSellerPDFRecipt/SellerPDFRecipt/SellerPDFRecipt";
 
 import * as actionCreators from "./Store/ActionCreators/customerView";
 import * as actionCreatorsLogin from "./Store/ActionCreators/logIn";
@@ -81,14 +83,24 @@ class App extends Component {
       otherPaths = (
         <div className="grid">
           {header}
-
           <div>
             <Switch>
               <Route
-                path="/history/:id/details/recipt/PDF"
-                component={ReciptPDF}
+                path="/history/:id/details/recipt/buyerPDF"
+                component={BuyerPDFRecipt}
               />
-              <Route path="/history/:id/details/recipt" component={Recipt} />
+              <Route
+                path="/history/:id/details/recipt/sellerPDF"
+                component={SellerPDFRecipt}
+              />
+              <Route
+                path="/history/:id/details/buyer/recipt"
+                component={BuyerRecipt}
+              />
+              <Route
+                path="/history/:id/details/seller/recipt"
+                component={SellerRecipt}
+              />
               <Route path="/history/:id/details" component={Details} />
               <Route path="/history" component={YarnView} />
               <Route path="/customer" component={CustomerAddView} />
@@ -110,7 +122,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <div className="background"></div>
+        {/* <div className="background"></div> */}
         <div className="app">{otherPaths}</div>
       </React.Fragment>
     );

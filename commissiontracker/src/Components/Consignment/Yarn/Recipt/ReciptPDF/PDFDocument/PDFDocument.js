@@ -37,7 +37,7 @@ class PDFDocument extends Component {
             consignmentInfo={this.props.data.consignmentInfo}
           />
           <ConsignmentInfo
-            type="Buyer"
+            type={this.props.type}
             consignmentInfo={this.props.data.consignmentInfo}
           />
         </React.Fragment>

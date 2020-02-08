@@ -3,7 +3,7 @@ import { PDFViewer } from "@react-pdf/renderer";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import PDFDocument from "../../../../../Components/Recipt/ReciptPDF/PDFDocument/PDFDocument";
+import PDFDocument from "../../../../../../Components/Consignment/Yarn/Recipt/ReciptPDF/PDFDocument/PDFDocument";
 import classes from "./ReciptPDF.module.css";
 
 class ReciptPDF extends Component {
@@ -25,7 +25,7 @@ class ReciptPDF extends Component {
       <div className={classes.pdf}>
         {this.state.details ? (
           <PDFViewer>
-            <PDFDocument data={this.state.details} />
+            <PDFDocument data={this.state.details} type={this.props.type} />
           </PDFViewer>
         ) : null}
       </div>

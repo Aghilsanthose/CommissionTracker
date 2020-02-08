@@ -36,7 +36,7 @@ const detailsYarnPageReducer = (state = initialState, action) => {
     case actionTypes.DETAILSERROR:
       return {
         ...state,
-        errorMsg: action.data
+        errMsg: action.data
       };
     default:
       return state;

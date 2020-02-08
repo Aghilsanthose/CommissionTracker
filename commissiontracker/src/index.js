@@ -15,6 +15,7 @@ import detailsYarnPageReducer from "./Store/Reducers/Details/detailsYarnPageRedu
 import authenticateUserReducer from "./Store/Reducers/LoginReducer/authenticateUserReducer";
 import addInforeducer from "./Store/Reducers/Customer/Add/addInfoReducer";
 import addYarnReducer from "./Store/Reducers/Consignment/AddYarn/addYarnReducer";
+import individualYarnDeleteReducer from "./Store/Reducers/Consignment/IndividualYarnDelete/individualYarnDeleteReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
   consignment: consignmentReducer,
   detailsPage: detailsYarnPageReducer,
   auth: authenticateUserReducer,
-  addYarn: addYarnReducer
+  addYarn: addYarnReducer,
+  individualYarnDeleteModal: individualYarnDeleteReducer
 });
 
 const store = createStore(

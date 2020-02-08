@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import Spinner from "../../../Components/Spinner/Spinner";
+import Spinner from "../../../../Components/UI/Spinner/Spinner";
 
-import * as actionCreators from "../../../Store/ActionCreators/detailsYarn";
+import * as actionCreators from "../../../../Store/ActionCreators/detailsYarn";
 import classes from "./Details.module.css";
 class Details extends Component {
   state = {
@@ -22,7 +22,7 @@ class Details extends Component {
     ) {
       this.props.retrivingBuyerInfo(
         this.props.consignmentInfo.buyerKey,
-        this.props.userID
+        this.props.userId
       );
     }
 
@@ -37,7 +37,7 @@ class Details extends Component {
     ) {
       this.props.retrivingSellerInfo(
         this.props.consignmentInfo.sellerKey,
-        this.props.userID
+        this.props.userId
       );
     }
 
@@ -59,7 +59,7 @@ class Details extends Component {
     // console.log();
     this.props.retrivingConsignmentInfo(
       this.props.match.params.id,
-      this.props.userID
+      this.props.userId
     );
     this.setState({ consignmentInfo: true });
   }
@@ -222,15 +222,33 @@ class Details extends Component {
             <button
               onClick={() =>
                 this.props.history.push(
-                  `/history/${this.props.match.params.id}/details/recipt`
+                  `/history/${this.props.match.params.id}/details/buyer/recipt`
                 )
               }
             >
               Print Buyer Recipt
             </button>
-            <button>Print Seller Recipt</button>
+            <button
+              onClick={() =>
+                this.props.history.push(
+                  `/history/${this.props.match.params.id}/details/seller/recipt`
+                )
+              }
+            >
+              Print Seller Recipt
+            </button>
           </div>
         </div>
+      );
+    }
+
+    //When error occurs on loading details page
+
+    if (this.props.error) {
+      details = (
+        <p className={classes.error}>
+          Thanks for patience! Details cannot be loaded at the time !!!
+        </p>
       );
     }
 
@@ -248,19 +266,20 @@ const mapStateToProps = state => {
     buyerInfo: state.detailsPage.buyerInfo,
     sellerInfo: state.detailsPage.sellerInfo,
     consignmentInfo: state.detailsPage.consignmentInfo,
-    userID: state.auth.userID
+    userId: state.auth.userId,
+    error: state.detailsPage.errMsg
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    retrivingBuyerInfo: (buyerKey, userID) =>
-      dispatch(actionCreators.retrivingBuyerDataForDetails(buyerKey, userID)),
-    retrivingSellerInfo: (sellerKey, userID) =>
-      dispatch(actionCreators.retrivingSellerDataForDetails(sellerKey, userID)),
-    retrivingConsignmentInfo: (consignmentKey, userID) =>
+    retrivingBuyerInfo: (buyerKey, userId) =>
+      dispatch(actionCreators.retrivingBuyerDataForDetails(buyerKey, userId)),
+    retrivingSellerInfo: (sellerKey, userId) =>
+      dispatch(actionCreators.retrivingSellerDataForDetails(sellerKey, userId)),
+    retrivingConsignmentInfo: (consignmentKey, userId) =>
       dispatch(
-        actionCreators.retrivingConsignmentForDetails(consignmentKey, userID)
+        actionCreators.retrivingConsignmentForDetails(consignmentKey, userId)
       )
   };
 };

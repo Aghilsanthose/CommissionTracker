@@ -12,6 +12,7 @@ const dateWiseYarnView = props => {
         {props.data.dataArray.map((indEL, index) => (
           <IndividualYarnView
             key={props.data.dataArray[index].key}
+            deleteHandler={props.deleteHandler}
             dataArr={props.data.dataArray[index]}
             updateHandler={() =>
               props.updateHandler(

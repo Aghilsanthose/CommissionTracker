@@ -3,17 +3,19 @@ import { connect } from "react-redux";
 import { withRouter, Route } from "react-router-dom";
 
 import classes from "./YarnView.module.css";
-import Spinner from "../../../../Components/Spinner/Spinner";
-import * as actionCreators from "../../../../Store/ActionCreators/consignmentYarn";
-import DateWiseYarnView from "../../../../Components/Consignment/DateWiseYarnView/DateWiseYarnView";
-import Modal from "../../../../Components/Modal/Modal";
-import BackDrop from "../../../../Components/BackDrop/Backdrop";
+import Spinner from "../../../../Components/UI/Spinner/Spinner";
+import DateWiseYarnView from "../../../../Components/Consignment/Yarn/DateWiseYarnView/DateWiseYarnView";
+import Modal from "../../../../Components/UI/Modal/Modal";
+import BackDrop from "../../../../Components/UI/BackDrop/Backdrop";
 import Input from "../../../../Components/Input/Input";
 import Filter from "./Filter/Filter";
-import Details from "../../Details/Details";
+import IndividualYarnDeleteModal from "../../../../Components/Consignment/Yarn/IndividualYarnDeleteModal/IndividualYarnDeleteModal";
 
 import yarnModalDetails from "../../../../ResusableFunctions/yarnModalDetails";
 import validationFunction from "../../../../ResusableFunctions/validationFunction";
+
+import * as actionCreators from "../../../../Store/ActionCreators/consignmentYarn";
+import * as actionCreatorsDelete from "../../../../Store/ActionCreators/individualYarnDelete";
 
 class YarnView extends Component {
   state = {
@@ -22,7 +24,8 @@ class YarnView extends Component {
     updateKeyDate: null,
     modal: false,
     buyerPendingCommission: NaN,
-    sellerPendingCommission: NaN
+    sellerPendingCommission: NaN,
+    deleteIndividualYarnKey: null
   };
 
   locatingParticularYarnHistoryData = () => {
@@ -46,6 +49,11 @@ class YarnView extends Component {
         buyerPendingCommission: buyer,
         sellerPendingCommission: seller
       });
+    }
+
+    //Retriving yarnlist on deleting the individual yarn data
+    if (this.props.individualYarnDeleteIdentifier) {
+      this.props.retrivingYarnData(null, this.props.userId);
     }
   }
 
@@ -115,6 +123,29 @@ class YarnView extends Component {
     this.props.history.push(`/history/${orderKey}/details`);
   };
 
+  individualYarnDeleteHandler = key => {
+    this.setState({
+      deleteIndividualYarnKey: key.dataArr.key
+    });
+    this.props.deleteModal();
+  };
+
+  continueIndividualYarnDeleteHandler = () => {
+    this.props.deletingIndividualYarn(
+      this.state.deleteIndividualYarnKey,
+      this.props.userId
+    );
+  };
+
+  cancelIndividualYarnDeleteHandler = () => {
+    this.setState(prevState => {
+      return {
+        deleteIndividualYarnKey: null
+      };
+    });
+    this.props.deleteModal();
+  };
+
   render() {
     // console.log("In", this.props.yarnHistoryList);
 
@@ -136,6 +167,7 @@ class YarnView extends Component {
             data={individualElement}
             updateHandler={this.updateHandler}
             detailsButton={this.detailsButtonHandler}
+            deleteHandler={this.individualYarnDeleteHandler}
           />
         );
       });
@@ -216,6 +248,21 @@ class YarnView extends Component {
       );
     }
 
+    //Delete Modal PopUp
+    let deleteModal = null;
+
+    if (this.props.deleteModalBool) {
+      deleteModal = (
+        <IndividualYarnDeleteModal
+          continue={this.continueIndividualYarnDeleteHandler}
+          cancel={this.cancelIndividualYarnDeleteHandler}
+          deleteKey={this.state.deleteIndividualYarnKey}
+          loading={this.props.deleteLoading}
+          error={this.props.deleteError}
+        />
+      );
+    }
+
     return (
       <React.Fragment>
         <div className={classes.fixed}></div>
@@ -223,6 +270,7 @@ class YarnView extends Component {
           <Filter />
           {yarnList}
           {modal}
+          {deleteModal}
         </div>
       </React.Fragment>
     );
@@ -234,7 +282,12 @@ const mapStateToProps = state => {
     yarnHistoryList: state.consignment.yarnHistoryList,
     loading: state.detailsPage.loading,
     errMsg: state.detailsPage.errMsg,
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    deleteLoading: state.individualYarnDeleteModal.loading,
+    deleteError: state.individualYarnDeleteModal.error,
+    deleteModalBool: state.individualYarnDeleteModal.deleteModal,
+    individualYarnDeleteIdentifier:
+      state.individualYarnDeleteModal.individualYarnDeleteIdentifier
   };
 };
 
@@ -243,7 +296,13 @@ const mapDispatchToProps = dispatch => {
     retrivingYarnData: (filterArr, userId) =>
       dispatch(actionCreators.retrivingYarnDataFromServer(filterArr, userId)),
     storingPaidCommission: (commissionObj, key, userId) =>
-      dispatch(actionCreators.storingPaidCommission(commissionObj, key, userId))
+      dispatch(
+        actionCreators.storingPaidCommission(commissionObj, key, userId)
+      ),
+    deleteModal: () =>
+      dispatch(actionCreatorsDelete.individualYarnDeleteModal()),
+    deletingIndividualYarn: (key, userId) =>
+      dispatch(actionCreatorsDelete.deletingIndividualYarn(key, userId))
   };
 };
 
