@@ -7,3 +7,15 @@
   left: 20%;
   right: 20%;
 }
+
+.backgroundimage {
+  background: url("../../Assets/Buyer/Background/outi-mahonen-lYW1mBzTqMA-unsplash.jpg");
+  background-size: contain;
+  position: fixed;
+  z-index: -90;
+  filter: blur(10%);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}

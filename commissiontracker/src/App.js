@@ -122,7 +122,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        {/* <div className="background"></div> */}
+        <div className="background"></div>
         <div className="app">{otherPaths}</div>
       </React.Fragment>
     );

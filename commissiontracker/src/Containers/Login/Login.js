@@ -143,6 +143,7 @@ class Login extends Component {
 
     return (
       <div className={classes.logincontainer}>
+        <div className={classes.loginbackground}></div>
         <div className={classes.loginbox}>
           <Logo />
           {loginOrSpinner}

@@ -8,6 +8,7 @@ import classes from "./CustomerAddView.module.css";
 const customerAddView = () => {
   return (
     <React.Fragment>
+      <div className={classes.backgroundimage}></div>
       <div className={classes.customer}></div>
       <CustomerAddButtons />
       <CustomerAdd />
